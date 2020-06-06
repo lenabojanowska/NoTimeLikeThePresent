@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="toolss" type="id" />
+    <item name="tabs" type="id" />
+    <item name="to_do_tab" type="id" />
+    <item name="calendar_tab" type="id" />
+    <item name="health_tab" type="id" />
+    <item name="weather_tab" type="id" />
+    <item name="drawer_layout" type="id" />
+
+
+</resources>
