@@ -7,7 +7,7 @@ import java.util.Date;
 
 public class API {
     public static final String App_id = "117294ceca25a94e9addb22e95298597";
-    public static Location location;
+    public static Location location = null;
 
 
     public static String convertUnixToDate(long dt) {

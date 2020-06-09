@@ -103,7 +103,7 @@ public class WeatherFragment extends Fragment {
 
         imageViewWeather = (ImageView) view.findViewById(R.id.imageViewWeather);
 
-
+        getWeatherInformation();
 
         context = getActivity();
 
@@ -128,7 +128,7 @@ public class WeatherFragment extends Fragment {
                             buildLocationRequest();
                             buildLocationCallBack();
 
-                            if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                            if (ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                                 return;
                             }
                             fusedLocationProviderClient.requestLocationUpdates(locationRequest, locationCallback, Looper.myLooper());
@@ -141,7 +141,7 @@ public class WeatherFragment extends Fragment {
                     }
                 }).check();
 
-getWeatherInformation();
+
 
 
         return view;
@@ -149,7 +149,7 @@ getWeatherInformation();
     }
 
     private void getWeatherInformation() {
-        compositeDisposable.add(weatherAPI.getWeatherByLocalization(String.valueOf(API.location),
+        compositeDisposable.add(weatherAPI.getWeatherByLocalization(String.valueOf(location),
                 String.valueOf(location),
                 App_id,
                 "metric")
