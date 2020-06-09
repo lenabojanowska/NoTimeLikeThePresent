@@ -53,12 +53,13 @@
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewPager"
-        android:layout_width="382dp"
-        android:layout_height="648dp"
+        android:layout_width="413dp"
+        android:layout_height="739dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:layout_constraintVertical_bias="0.808" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
