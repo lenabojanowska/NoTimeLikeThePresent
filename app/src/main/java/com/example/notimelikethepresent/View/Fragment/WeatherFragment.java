@@ -63,22 +63,27 @@ import static com.example.notimelikethepresent.Connection.API.location;
 public class WeatherFragment extends Fragment {
 
 
-    private ConstraintLayout constraintLayout;
 
-    private FusedLocationProviderClient fusedLocationProviderClient;
-    private LocationCallback locationCallback;
-    private LocationRequest locationRequest;
+
+
+    static WeatherFragment instance;
+
+    public static WeatherFragment getInstance(){
+        if(instance == null)
+            instance = new WeatherFragment();
+        return instance;
+    }
 
     private static Context context = null;
 
     private TextView textViewCity, textViewTemp, textViewSth, textViewSth2,
-                    textViewWind, textViewSunset, textViewSunrise, textViewCoord, textViewPressure, textViewHumidity;
+            textViewWind, textViewSunset, textViewSunrise, textViewCoord, textViewPressure, textViewHumidity;
     private ImageView imageViewWeather;
 
     CompositeDisposable compositeDisposable;
     WeatherAPI weatherAPI;
 
-    public WeatherFragment(){
+    public WeatherFragment() {
         compositeDisposable = new CompositeDisposable();
         Retrofit retrofit = ServiceGenerator.getInstance();
         weatherAPI = retrofit.create(WeatherAPI.class);
@@ -103,7 +108,6 @@ public class WeatherFragment extends Fragment {
 
         imageViewWeather = (ImageView) view.findViewById(R.id.imageViewWeather);
 
-        getWeatherInformation();
 
         context = getActivity();
 
@@ -112,103 +116,53 @@ public class WeatherFragment extends Fragment {
         //constraintLayout.setVisibility(View.VISIBLE);
 
 
-        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(getActivity());
-
-        //((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        Dexter.withActivity(getActivity())
-                .withPermissions(Manifest.permission.ACCESS_COARSE_LOCATION,
-                        Manifest.permission.ACCESS_FINE_LOCATION)
-                .withListener(new MultiplePermissionsListener() {
 
 
-                    @Override
-                    public void onPermissionsChecked(MultiplePermissionsReport report) {
-                        if (report.areAllPermissionsGranted()) {
-                            buildLocationRequest();
-                            buildLocationCallBack();
-
-                            if (ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                                return;
-                            }
-                            fusedLocationProviderClient.requestLocationUpdates(locationRequest, locationCallback, Looper.myLooper());
-                        }
-                    }
-
-                    @Override
-                    public void onPermissionRationaleShouldBeShown(List<PermissionRequest> permissions, PermissionToken token) {
-                        Snackbar.make(constraintLayout, "Permission denied", Snackbar.LENGTH_LONG).show();
-                    }
-                }).check();
-
-
+        getWeatherInformation();
 
 
         return view;
 
     }
 
+
     private void getWeatherInformation() {
-        compositeDisposable.add(weatherAPI.getWeatherByLocalization(String.valueOf(location),
-                String.valueOf(location),
-                App_id,
-                "metric")
-        .subscribeOn(Schedulers.io())
-        .observeOn(AndroidSchedulers.mainThread())
-        .subscribe(new Consumer<WeatherResponse>() {
-                       @Override
-                       public void accept(WeatherResponse weatherResponse) throws Exception {
+        compositeDisposable.add(weatherAPI.getWeatherByLocalization(String.valueOf(API.location.getLatitude()),
+                String.valueOf(API.location.getLongitude()),
+                API.App_id)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<WeatherResponse>() {
+                               @Override
+                               public void accept(WeatherResponse weatherResponse) throws Exception {
 
-                           //Load image
-                           Picasso.get().load(new StringBuilder("https://openweathermap.org/img/wn/")
-                                   .append(weatherResponse.getWeather().get(0).getIcon())
-                           .append(".png").toString()).into(imageViewWeather);
+                                   //Load image
+                                   Picasso.get().load(new StringBuilder("https://openweathermap.org/img/wn/")
+                                           .append(weatherResponse.getWeather().get(0).getIcon())
+                                           .append(".png").toString()).into(imageViewWeather);
 
-                           textViewCity.setText(weatherResponse.getName());
-                           textViewTemp.setText(new StringBuilder(
-                                   String.valueOf(weatherResponse.getMain().getTemp())).append("°C").toString());
-                            textViewSth.setText(API.convertUnixToDate(weatherResponse.getDt()));
-                            textViewPressure.setText(new StringBuilder(String.valueOf(weatherResponse.getMain().getPressure())).append("hpa").toString());
-                            textViewHumidity.setText(new StringBuilder(String.valueOf(weatherResponse.getMain().getHumidity())).append("%").toString());textViewSunrise.setText(API.convertUnixToHour(weatherResponse.getSys().getSunrise()));
-                           textViewSunrise.setText(API.convertUnixToHour(weatherResponse.getSys().getSunrise()));
-                           textViewSunset.setText(API.convertUnixToHour(weatherResponse.getSys().getSunset()));
-                           textViewCoord.setText(new StringBuilder("[").append(weatherResponse.getCoord().toString()).append("]").toString());
-                       }
-                   }, new Consumer<Throwable>() {
-                       @Override
-                       public void accept(Throwable throwable) throws Exception {
-                           Toast.makeText(getActivity(), ""+throwable.getMessage(), Toast.LENGTH_SHORT);
-                       }
-                   }
-        ));
-    }
+                                   textViewCity.setText(weatherResponse.getName());
+                                   textViewTemp.setText(new StringBuilder(
+                                           String.valueOf(weatherResponse.getMain().getTemp())).append("°C").toString());
+                                   textViewSth.setText(API.convertUnixToDate(weatherResponse.getDt()));
+                                   textViewPressure.setText(new StringBuilder(String.valueOf(weatherResponse.getMain().getPressure())).append("hpa").toString());
+                                   textViewHumidity.setText(new StringBuilder(String.valueOf(weatherResponse.getMain().getHumidity())).append("%").toString());
+                                   textViewSunrise.setText(API.convertUnixToHour(weatherResponse.getSys().getSunrise()));
+                                   textViewSunrise.setText(API.convertUnixToHour(weatherResponse.getSys().getSunrise()));
+                                   textViewSunset.setText(API.convertUnixToHour(weatherResponse.getSys().getSunset()));
+                                   textViewCoord.setText(new StringBuilder("[").append(weatherResponse.getCoord().toString()).append("]").toString());
+                               }
 
-    private void buildLocationCallBack() {
-       locationCallback = new LocationCallback(){
+                           }, new Consumer<Throwable>() {
+                               @Override
+                               public void accept(Throwable throwable) throws Exception {
+                                   Toast.makeText(getActivity(), "" + throwable.getMessage(), Toast.LENGTH_SHORT);
+                               }
+                           }
 
-           @Override
-           public void onLocationResult(LocationResult location) {
-               super.onLocationResult(location);
+                ));
 
-               API.location =  location.getLastLocation();
 
-               //constraintLayout = (ConstraintLayout) viewfindViewById(R.id.view);
-
-               //Log
-               Log.d("Location", location.getLastLocation().getLatitude() + "/" + location.getLastLocation().getLongitude());
-           }
-
-       };
 
     }
-
-    private void buildLocationRequest() {
-        locationRequest = new LocationRequest();
-        locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
-
-        locationRequest.setInterval(5000);
-        locationRequest.setFastestInterval(3000);
-        locationRequest.setSmallestDisplacement(10.0f);
-    }
-
 }

@@ -20,7 +20,7 @@ public class WeatherResponse {
     private Clouds clouds;
     private int dt;
     private Sys sys;
-    private int timezone;//!!!
+
     private int id;
     private String name;
     private int cod;
@@ -90,13 +90,6 @@ public class WeatherResponse {
         this.sys = sys;
     }
 
-    public int getTimezone() {
-        return timezone;
-    }
-
-    public void setTimezone(int timezone) {
-        this.timezone = timezone;
-    }
 
     public int getId() {
         return id;

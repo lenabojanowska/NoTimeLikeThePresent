@@ -8,7 +8,6 @@ public interface WeatherAPI {
     @GET("weather")
     Observable<WeatherResponse> getWeatherByLocalization(@Query("lat") String lat,
                                                          @Query("lon") String lng,
-                                                         @Query("appid") String appid,
-                                                         @Query("units") String unit
+                                                         @Query("appid") String appid
     );
 }
