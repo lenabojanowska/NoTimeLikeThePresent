@@ -18,6 +18,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.notimelikethepresent.Entities.Task;
@@ -54,6 +55,8 @@ public class TaskFragment extends Fragment  {
        //spinner = (Spinner)viewview.findViewById(R.id.spinner);
         priorityPicker = (NumberPicker)view.findViewById(R.id.priorityPicker);
         saveTaskButton = (Button)view.findViewById(R.id.saveTaskButton);
+        //saveTaskButton.setOnClickListener(v-> getParentFragmentManager().beginTransaction().replace(R.id.fragment_container, new ToDoFragment()).addToBackStack(null).commit());
+
 
         priorityPicker.setMinValue(1);
         priorityPicker.setMaxValue(5);
@@ -76,12 +79,14 @@ public class TaskFragment extends Fragment  {
 
                 editTextTitle.setText("");
                 editTextDetails.setText("");
-
+                //onBackPressed();
+               // taskViewModel.getAllTasks();
             }
         });
 
     return  view;
     }
+
 
 
 
