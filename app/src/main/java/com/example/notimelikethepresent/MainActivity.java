@@ -19,12 +19,16 @@ import android.widget.Toolbar;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.ActivityCompat;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.room.Room;
 import androidx.viewpager.widget.ViewPager;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.notimelikethepresent.Adapter.ViewPagerAdapter;
 import com.example.notimelikethepresent.Connection.API;
+import com.example.notimelikethepresent.LocalStorage.TaskDatabase;
+import com.example.notimelikethepresent.View.Fragment.MainFragment;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
@@ -43,14 +47,10 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ViewPagerAdapter viewPagerAdapter;
+    public static FragmentManager fragmentManager;
+    //public static TaskDatabase taskDatabase;
 
-    private ConstraintLayout constraintLayout;
-
-    private TabItem weatherTab, calendarTab, healthTab, toDoTab;
-    private TabLayout tabLayout;
     private Toolbar toolbar;
-    private ViewPager viewPager;
 
     private FusedLocationProviderClient fusedLocationProviderClient;
     private LocationCallback locationCallback;
@@ -62,11 +62,29 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        constraintLayout = (ConstraintLayout) findViewById(R.id.view);
+        toolbar = findViewById(R.id.toolbar);
+
+        fragmentManager = getSupportFragmentManager();
+
+       // taskDatabase = Room.databaseBuilder(getApplicationContext(),TaskDatabase.class, "")
+
+        if(findViewById(R.id.fragment_container) != null)
+        {
+            if(savedInstanceState!=null)
+            {
+                return;
+            }
+            fragmentManager.beginTransaction().add(R.id.fragment_container, new MainFragment()).commit();
+        }
 
         //constraintLayout.setVisibility(View.VISIBLE);
 
-        toolbar = findViewById(R.id.toolbar);
+
+
+//        if (savedInstanceState == null) {
+//            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new MainFragment()).commit();
+//            navigationView.setCheckedItem(R.id.itemMain);
+//        }
 
         Dexter.withActivity(this)
                 .withPermissions(Manifest.permission.ACCESS_COARSE_LOCATION,
@@ -92,52 +110,11 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override
                     public void onPermissionRationaleShouldBeShown(List<PermissionRequest> permissions, PermissionToken token) {
-                        Snackbar.make(constraintLayout, "Permission denied", Snackbar.LENGTH_LONG).show();
+
                     }
                 }).check();
 
-        tabLayout = findViewById(R.id.tabs);
-        weatherTab = findViewById(R.id.weather_tab);
-        calendarTab = findViewById(R.id.calendar_tab);
-        healthTab = findViewById(R.id.health_tab);
-        toDoTab = findViewById(R.id.to_do_tab);
-        viewPager = findViewById(R.id.viewPager);
 
-        viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
-        viewPager.setAdapter(viewPagerAdapter);
-
-
-
-        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                viewPager.setCurrentItem(tab.getPosition());
-                if (tab.getPosition() == 0) {
-                    viewPagerAdapter.notifyDataSetChanged();
-                } else if (tab.getPosition() == 1) {
-                    viewPagerAdapter.notifyDataSetChanged();
-                } else if (tab.getPosition() == 2) {
-                    viewPagerAdapter.notifyDataSetChanged();
-                } else if (tab.getPosition() == 3) {
-                    viewPagerAdapter.notifyDataSetChanged();
-                }
-            }
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
-            }
-
-
-        });
-
-
-        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
 
 
         //((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);

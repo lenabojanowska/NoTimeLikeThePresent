@@ -12,13 +12,13 @@ public class Task {
     private String title;
     private String details;
     private int priority;
-    private boolean idDone;
+   // private boolean idDone;
 
-    public Task(String title, String details, int priority, boolean idDone) {
+    public Task(String title, String details, int priority) {
         this.title = title;
         this.details = details;
         this.priority = priority;
-        this.idDone = idDone;
+        //this.idDone = idDone;
     }
 
     public int getId() {
@@ -45,13 +45,13 @@ public class Task {
         this.details = details;
     }
 
-    public boolean isIdDone() {
-        return idDone;
-    }
+//    public boolean isIdDone() {
+//        return idDone;
+//    }
 
-    public void setIdDone(boolean idDone) {
-        this.idDone = idDone;
-    }
+//   // public void setIdDone(boolean idDone) {
+//        this.idDone = idDone;
+//    }
 
     public int getPriority() {
         return priority;

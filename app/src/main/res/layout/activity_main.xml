@@ -1,66 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraint"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    >
+    tools:context=".MainActivity">
 
-    <FrameLayout
-        android:layout_width="407dp"
-        android:layout_height="642dp"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="89dp">
-
-        <androidx.viewpager.widget.ViewPager
-            android:id="@+id/viewPager"
-            android:layout_width="414dp"
-            android:layout_height="673dp" />
-    </FrameLayout>
-
-    <Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="416dp"
-        android:layout_height="82dp"
-
-        tools:layout_editor_absoluteX="-5dp" />
-
-    <com.google.android.material.tabs.TabLayout
-        android:id="@id/tabs"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="56dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        app:layout_constraintEnd_toEndOf="@+id/toolbar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/toolbar">
+        <Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="82dp"
 
-        <com.google.android.material.tabs.TabItem
-            android:id="@id/to_do_tab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="TO DO TAB" />
+            android:background="#673AB7" />
 
-        <com.google.android.material.tabs.TabItem
-            android:id="@id/calendar_tab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="CALENDAR TAB" />
+        <FrameLayout
+            android:id="@+id/fragment_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <com.google.android.material.tabs.TabItem
-            android:id="@id/health_tab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="HEALTH TAB" />
-
-        <com.google.android.material.tabs.TabItem
-            android:id="@id/weather_tab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="WEATHER TAB" />
-
-
-    </com.google.android.material.tabs.TabLayout>
+        </FrameLayout>
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "761729808147",
+    "firebase_url": "https://no-time-like-the-present.firebaseio.com",
+    "project_id": "no-time-like-the-present",
+    "storage_bucket": "no-time-like-the-present.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:761729808147:android:329f10b7d7774581c74ce6",
+        "android_client_info": {
+          "package_name": "com.example.notimelikethepresent"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "761729808147-o2e50qklfaauir42fg2983jgperates6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.notimelikethepresent",
+            "certificate_hash": "cc573edbeb025f0c5c160d28ceef183560fe2dc3"
+          }
+        },
+        {
+          "client_id": "761729808147-pns7ukhdi7hdjn085bea9a7hmbgv5k0s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA1I2Mh15xCStqJA1pvsZJ4_dgzSnu2WiY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "761729808147-pns7ukhdi7hdjn085bea9a7hmbgv5k0s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
