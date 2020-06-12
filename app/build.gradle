@@ -98,4 +98,7 @@ dependencies {
     implementation 'com.karumi:dexter:5.0.0'
 
     implementation 'com.google.android.gms:play-services-location:11.8.0'
+
+    implementation 'com.github.jakebonk:NotifyMe:1.0.0'
+    implementation 'com.wdullaer:materialdatetimepicker:3.6.0'
 }
