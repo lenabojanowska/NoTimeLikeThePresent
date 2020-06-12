@@ -50,7 +50,7 @@ public class TaskFragment extends Fragment  {
         View view = inflater.inflate(R.layout.fragment_task, container, false);
 
        editTextTitle = (EditText)view.findViewById(R.id.editTextTitle);
-       editTextDetails = (EditText)view.findViewById(R.id.editTextTitle);
+       editTextDetails = (EditText)view.findViewById(R.id.editTextDetails);
        //spinner = (Spinner)viewview.findViewById(R.id.spinner);
         priorityPicker = (NumberPicker)view.findViewById(R.id.priorityPicker);
         saveTaskButton = (Button)view.findViewById(R.id.saveTaskButton);
@@ -58,27 +58,27 @@ public class TaskFragment extends Fragment  {
         priorityPicker.setMinValue(1);
         priorityPicker.setMaxValue(5);
 
-//        taskViewModel = new ViewModelProvider(this).get(TaskViewModel.class);
-//        saveTaskButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Task task = new Task(
-//                        editTextTitle.getText().toString(),
-//                        editTextDetails.getText().toString(),
-//                        priorityPicker.getValue());
-////        task.setTitle(title);
-////        task.setDetails(details);
-////        task.setPriority(priority);
-//
-//                taskViewModel.insertTask(task);
-//
-//                Toast.makeText(getActivity(),"added",Toast.LENGTH_SHORT).show();
-//
-//                editTextTitle.setText("");
-//                editTextDetails.setText("");
-//
-//            }
-//        });
+        taskViewModel = new ViewModelProvider(this).get(TaskViewModel.class);
+        saveTaskButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Task task = new Task(
+                        editTextTitle.getText().toString(),
+                        editTextDetails.getText().toString(),
+                        priorityPicker.getValue());
+//        task.setTitle(title);
+//        task.setDetails(details);
+//        task.setPriority(priority);
+
+                taskViewModel.insertTask(task);
+
+                Toast.makeText(getActivity(),"added",Toast.LENGTH_SHORT).show();
+
+                editTextTitle.setText("");
+                editTextDetails.setText("");
+
+            }
+        });
 
     return  view;
     }

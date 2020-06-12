@@ -11,43 +11,42 @@
         android:id="@+id/priorityPicker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="104dp"
+        android:layout_marginTop="76dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextDetails" />
 
     <EditText
         android:id="@+id/editTextTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="76dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Name"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.741"
+        app:layout_constraintHorizontal_bias="0.746"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextDetails" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/editTextDetails"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="32dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Name"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.741"
+        app:layout_constraintHorizontal_bias="0.746"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextTitle" />
 
     <Button
         android:id="@+id/saveTaskButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="212dp"
         android:text="Add task"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
