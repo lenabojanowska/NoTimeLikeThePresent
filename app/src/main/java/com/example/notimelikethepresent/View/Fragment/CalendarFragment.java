@@ -8,6 +8,7 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.allyants.notifyme.NotifyMe;
@@ -80,6 +82,10 @@ public class CalendarFragment extends Fragment implements DatePickerDialog.OnDat
             @Override
             public void onClick(View v) {
                 datePickerDialog.show(getActivity().getFragmentManager(), "");
+
+
+
+
             }
         });
 
@@ -104,6 +110,11 @@ public class CalendarFragment extends Fragment implements DatePickerDialog.OnDat
         now.set(Calendar.MINUTE,minute);
         now.set(Calendar.SECOND,second);
 
+
+
+
+
+
         //--------------------------------
         //notification
 
@@ -119,6 +130,11 @@ public class CalendarFragment extends Fragment implements DatePickerDialog.OnDat
                 .addAction(new Intent(), "done")
                 .large_icon(R.mipmap.ic_launcher_round)
                 .build();
+
+        Toast.makeText(getActivity(), "You created a notification!!!", Toast.LENGTH_SHORT).show();
+        
+        titleEditText.setText("");
+        subtitleEditText.setText("");
     }
 
 

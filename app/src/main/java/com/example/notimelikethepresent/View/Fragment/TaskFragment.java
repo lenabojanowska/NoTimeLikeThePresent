@@ -19,14 +19,18 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.notimelikethepresent.Connection.Entities.Main;
 import com.example.notimelikethepresent.Entities.Task;
 import com.example.notimelikethepresent.LocalStorage.TaskDatabase;
+import com.example.notimelikethepresent.MainActivity;
 import com.example.notimelikethepresent.R;
 import com.example.notimelikethepresent.ViewModel.TaskViewModel;
 
 import static android.app.Activity.RESULT_OK;
+import static com.example.notimelikethepresent.View.Fragment.ToDoFragment.ADD_NOTE_REQUEST;
 
 public class TaskFragment extends Fragment  {
 
@@ -55,7 +59,6 @@ public class TaskFragment extends Fragment  {
        //spinner = (Spinner)viewview.findViewById(R.id.spinner);
         priorityPicker = (NumberPicker)view.findViewById(R.id.priorityPicker);
         saveTaskButton = (Button)view.findViewById(R.id.saveTaskButton);
-        //saveTaskButton.setOnClickListener(v-> getParentFragmentManager().beginTransaction().replace(R.id.fragment_container, new ToDoFragment()).addToBackStack(null).commit());
 
 
         priorityPicker.setMinValue(1);
@@ -81,17 +84,22 @@ public class TaskFragment extends Fragment  {
                 editTextDetails.setText("");
                 //onBackPressed();
                // taskViewModel.getAllTasks();
+               // beginTransaction().replace(R.id.fragment_container, new MainFragment(),null).commit();
+
+                Fragment newFragment = new MainFragment();
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+
+// Replace whatever is in the fragment_container view with this fragment,
+// and add the transaction to the back stack if needed
+                transaction.replace(R.id.fragment_container, newFragment);
+                transaction.addToBackStack(null);
+
+// Commit the transaction
+                transaction.commit();
+
             }
         });
 
     return  view;
     }
-
-
-
-
-
-
-
-
 }

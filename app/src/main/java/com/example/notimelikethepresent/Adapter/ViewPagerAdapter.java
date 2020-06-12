@@ -32,10 +32,11 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
                 return new HealthFragment();
             case 3:
                return new WeatherFragment();
-            default:
-                return null;
+
+
         }
 
+        return null;
     }
 
     @Override

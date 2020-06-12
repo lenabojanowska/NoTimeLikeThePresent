@@ -83,26 +83,6 @@ public class ToDoFragment extends Fragment {
 
 
 
-//    @Override
-//    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-//        //super.onActivityResult(requestCode, resultCode, data);
-//
-//        if(requestCode == ADD_NOTE_REQUEST && requestCode == RESULT_OK){
-//            String title = data.getStringExtra(TaskFragment.EXTRA_TITLE);
-//            String details = data.getStringExtra(TaskFragment.EXTRA_DETAILS);
-//            int priority = data.getIntExtra(TaskFragment.EXTRA_PRIORITY,1);
-//
-//            Task task = new Task(title,details,priority);
-//            taskViewModel.insertTask(task);
-//
-//            Toast.makeText(getActivity(),"task added", Toast.LENGTH_SHORT).show();
-//
-//
-//        }else{
-//            Toast.makeText(getActivity(),"failed, try again", Toast.LENGTH_SHORT).show();
-//
-//        }
-//    }
 
 
 
