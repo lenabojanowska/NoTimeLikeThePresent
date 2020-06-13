@@ -60,13 +60,9 @@ public class MainFragment extends Fragment {
             public void onTabReselected(TabLayout.Tab tab) {
 
             }
-
-
         });
 
-
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-
 
         return view;
     }

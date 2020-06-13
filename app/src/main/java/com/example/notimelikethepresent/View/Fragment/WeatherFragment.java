@@ -20,6 +20,7 @@ import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.MutableLiveData;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.notimelikethepresent.Connection.API;
@@ -62,10 +63,7 @@ import static com.example.notimelikethepresent.Connection.API.location;
 
 public class WeatherFragment extends Fragment {
 
-
-
-
-
+    private MutableLiveData currentWeather;
     static WeatherFragment instance;
 
     public static WeatherFragment getInstance(){
@@ -88,6 +86,7 @@ public class WeatherFragment extends Fragment {
         Retrofit retrofit = ServiceGenerator.getInstance();
         weatherAPI = retrofit.create(WeatherAPI.class);
 
+
     }
 
     @Override
@@ -99,7 +98,7 @@ public class WeatherFragment extends Fragment {
         textViewTemp = (TextView) view.findViewById(R.id.textViewTemperature);
         textViewSth = (TextView) view.findViewById(R.id.textViewSth);
         textViewSth2 = (TextView) view.findViewById(R.id.textViewSth2);
-        textViewWind = (TextView) view.findViewById(R.id.textViewWind);
+        //textViewWind = (TextView) view.findViewById(R.id.textViewWind);
         textViewSunrise = (TextView) view.findViewById(R.id.textViewSunrise);
         textViewSunset = (TextView) view.findViewById(R.id.textViewSunset);
         textViewHumidity = (TextView) view.findViewById(R.id.textViewHumidity);
@@ -111,22 +110,14 @@ public class WeatherFragment extends Fragment {
 
         context = getActivity();
 
-        //constraintLayout = (ConstraintLayout) view.findViewById(R.id.view);
-
-        //constraintLayout.setVisibility(View.VISIBLE);
-
-
-
-
         getWeatherInformation();
-
 
         return view;
 
     }
 
 
-    private void getWeatherInformation() {
+    public void getWeatherInformation() {
         compositeDisposable.add(weatherAPI.getWeatherByLocalization(String.valueOf(API.location.getLatitude()),
                 String.valueOf(API.location.getLongitude()),
                 API.App_id)
@@ -139,18 +130,19 @@ public class WeatherFragment extends Fragment {
                                    //Load image
                                    Picasso.get().load(new StringBuilder("https://openweathermap.org/img/wn/")
                                            .append(weatherResponse.getWeather().get(0).getIcon())
-                                           .append(".png").toString()).into(imageViewWeather);
+                                           .append(".png").toString()).resize(250, 250).
+                                           centerCrop().into(imageViewWeather);
 
                                    textViewCity.setText(weatherResponse.getName());
                                    textViewTemp.setText(new StringBuilder(
-                                           String.valueOf(weatherResponse.getMain().getTemp())).append("°C").toString());
+                                           String.valueOf(weatherResponse.getMain().getTemp())).append("K").toString());
                                    textViewSth.setText(API.convertUnixToDate(weatherResponse.getDt()));
                                    textViewPressure.setText(new StringBuilder(String.valueOf(weatherResponse.getMain().getPressure())).append("hpa").toString());
                                    textViewHumidity.setText(new StringBuilder(String.valueOf(weatherResponse.getMain().getHumidity())).append("%").toString());
                                    textViewSunrise.setText(API.convertUnixToHour(weatherResponse.getSys().getSunrise()));
                                    textViewSunrise.setText(API.convertUnixToHour(weatherResponse.getSys().getSunrise()));
                                    textViewSunset.setText(API.convertUnixToHour(weatherResponse.getSys().getSunset()));
-                                   textViewCoord.setText(new StringBuilder("[").append(weatherResponse.getCoord().toString()).append("]").toString());
+                                   textViewCoord.setText(new StringBuilder().append(weatherResponse.getCoord().toString()).append("]").toString());
                                }
 
                            }, new Consumer<Throwable>() {
@@ -162,7 +154,7 @@ public class WeatherFragment extends Fragment {
 
                 ));
 
-
+        //return currentWeather;
 
     }
 }

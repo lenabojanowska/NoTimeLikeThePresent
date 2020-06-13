@@ -52,7 +52,7 @@ public class CalendarFragment extends Fragment implements DatePickerDialog.OnDat
 
         titleEditText = (EditText) view.findViewById(R.id.titleEdtiView);
         subtitleEditText = (EditText) view.findViewById(R.id.subtitleEditView);
-        cancelButton = (Button) view.findViewById(R.id.cancelButton);
+        //cancelButton = (Button) view.findViewById(R.id.cancelButton);
         setNotificationButton = (Button) view.findViewById(R.id.saveNotificationButton);
 
         datePickerDialog = DatePickerDialog.newInstance(
@@ -71,12 +71,12 @@ public class CalendarFragment extends Fragment implements DatePickerDialog.OnDat
                 false
         );
 
-        cancelButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                NotifyMe.cancel(getActivity().getApplicationContext(),"test");
-            }
-        });
+//        cancelButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                NotifyMe.cancel(getActivity().getApplicationContext(),"test");
+//            }
+//        });
 
         setNotificationButton.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -17,7 +17,7 @@ import com.google.firebase.auth.FirebaseUser;
 import java.util.Arrays;
 import java.util.List;
 
-public class Login extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
     public static final int RC_SIGN_IN = 10;
 
     private List<AuthUI.IdpConfig> providers = Arrays.asList(
@@ -41,7 +41,7 @@ public class Login extends AppCompatActivity {
                             createSignInIntentBuilder()
                             .setAvailableProviders(providers)
                             .setIsSmartLockEnabled(false)
-                            .setLogo(R.drawable.logo)
+
                             .build(), RC_SIGN_IN);
         }
     }
@@ -52,7 +52,7 @@ public class Login extends AppCompatActivity {
 
         if (requestCode == RC_SIGN_IN) {
             if (resultCode == RESULT_OK) {
-                Toast.makeText(Login.this, "You are now signed in",
+                Toast.makeText(LoginActivity.this, "You are now signed in",
                         Toast.LENGTH_LONG).show();
                 startActivity(new Intent(this, MainActivity.class));
             } else {

@@ -78,7 +78,7 @@ public class TaskFragment extends Fragment  {
 
                 taskViewModel.insertTask(task);
 
-                Toast.makeText(getActivity(),"added",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(),"You added a task!",Toast.LENGTH_SHORT).show();
 
                 editTextTitle.setText("");
                 editTextDetails.setText("");

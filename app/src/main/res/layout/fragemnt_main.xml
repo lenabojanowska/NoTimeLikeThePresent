@@ -13,32 +13,34 @@
 
         <com.google.android.material.tabs.TabLayout
             android:id="@id/tabs"
+            style="health"
             android:layout_width="match_parent"
-            android:layout_height="56dp">
+            android:layout_height="56dp"
+            app:tabIndicatorColor="#F7673AB7">
 
             <com.google.android.material.tabs.TabItem
                 android:id="@id/to_do_tab"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="TO DO TAB" />
+                android:text="TO DO " />
 
             <com.google.android.material.tabs.TabItem
                 android:id="@id/calendar_tab"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="CALENDAR TAB" />
+                android:text="Remainders" />
 
             <com.google.android.material.tabs.TabItem
                 android:id="@id/health_tab"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="HEALTH TAB" />
+                android:text="HEALTH" />
 
             <com.google.android.material.tabs.TabItem
                 android:id="@id/weather_tab"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="WEATHER TAB" />
+                android:text="WEATHER " />
 
 
         </com.google.android.material.tabs.TabLayout>

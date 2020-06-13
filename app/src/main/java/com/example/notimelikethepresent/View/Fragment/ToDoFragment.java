@@ -58,7 +58,7 @@ public class ToDoFragment extends Fragment {
 
                 taskAdapter.setTasks(tasks);
 
-                Toast.makeText(getActivity(), "onChanged", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity(), "onChanged", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -73,7 +73,7 @@ public class ToDoFragment extends Fragment {
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
 
                 taskViewModel.deleteTask(taskAdapter.getTaskAt(viewHolder.getAdapterPosition()));
-                Toast.makeText(getActivity(), "task deleted", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "You deleted a task!", Toast.LENGTH_SHORT).show();
 
             }
         }).attachToRecyclerView(recyclerView);

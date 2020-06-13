@@ -63,29 +63,12 @@ public class HealthFragment extends Fragment implements SensorEventListener {
         imageView4.setBackgroundResource(R.drawable.animation_bottle_filling);
         bottleAnimation4 = (AnimationDrawable) imageView4.getBackground();
 
-        //ImageView imageView = view.findViewById(R.id.bottleImageView);
-       // ((AnimationDrawable) bottleImage.setBackgroundResource(R.drawable.b3)).start();
-       // imageView.setBackgroundResource(R.drawable.animation_bottle_filling);
-
-       // bottleAnimation = (AnimationDrawable) imageView.getBackground();
-//
-//        counterView = new TextView(getActivity().getApplicationContext());
-//        counterView.setTextSize(30);
-//        //getActivity().setContentView(textView);
-//
-//        // Get an instance of the SensorManager
-//        sensorManager = (SensorManager) getActivity().getSystemService(SENSOR_SERVICE);
-//        accel = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-//        simpleStepDetector = new StepDetector();
-//        simpleStepDetector.registerListener((StepListener) this);
-//
+//------------------------------------
+        //animation
 
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                bottleAnimation.start();
-                bottleAnimation2.start();
-            }
+            public void onClick(View v) { bottleAnimation.start(); }
         });
 
         imageView2.setOnClickListener(new View.OnClickListener() {
@@ -108,33 +91,19 @@ public class HealthFragment extends Fragment implements SensorEventListener {
                 bottleAnimation4.start();
             }
         });
-//        bottleImage.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                bottleAnimation.start();
-//            }
-//        });
-//
-//        //animatedSelector = view.findViewById(R.id.imageview_animated_selector);
-//        // bottleImage = view .findViewById(R.id.bottleImage);
-//        counterView = view.findViewById(R.id.counterView);
-
 
         return view;
     }
-//------------------------------------
-    //animation
-
 
 
 //------------------------------------
     //Sensor, step counter
+
     @Override
     public void onSensorChanged(SensorEvent event) {
         if(running){
             counterView.setText(String.valueOf(event.values[0]));
         }
-
     }
 
     @Override
@@ -161,37 +130,4 @@ public class HealthFragment extends Fragment implements SensorEventListener {
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
 
     }
-
-//    @Override
-//    public void onResume() {
-//        super.onResume();
-//        numSteps = 0;
-//        counterView.setText(TEXT_NUM_STEPS + numSteps);
-//        sensorManager.registerListener((SensorEventListener) getActivity(), accel, SensorManager.SENSOR_DELAY_FASTEST);
-//    }
-//
-//    @Override
-//    public void onPause() {
-//        super.onPause();
-//        sensorManager.unregisterListener((SensorEventListener) getActivity());
-//    }
-
-//    @Override
-//    public void onAccuracyChanged(Sensor sensor, int accuracy) {
-//    }
-//
-//    @Override
-//    public void onSensorChanged(SensorEvent event) {
-//        if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
-//            simpleStepDetector.updateAccel(
-//                    event.timestamp, event.values[0], event.values[1], event.values[2]);
-//        }
-//    }
-
-
-//    public void step(long timeNs) {
-//        numSteps++;
-//        counterView.setText(TEXT_NUM_STEPS + numSteps);
-//    }
-
 }

@@ -15,9 +15,11 @@
         <Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="82dp"
+            android:layout_height="60dp"
 
-            android:background="#673AB7" />
+            android:background="#BA673AB7"
+            android:subtitleTextAppearance="@style/TextAppearance.AppCompat.Large"
+            android:titleTextAppearance="@style/TextAppearance.AppCompat.Body1" />
 
         <FrameLayout
             android:id="@+id/fragment_container"
@@ -25,6 +27,7 @@
             android:layout_height="match_parent">
 
         </FrameLayout>
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
