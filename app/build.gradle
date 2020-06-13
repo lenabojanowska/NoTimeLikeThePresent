@@ -101,4 +101,11 @@ dependencies {
 
     implementation 'com.github.jakebonk:NotifyMe:1.0.0'
     implementation 'com.wdullaer:materialdatetimepicker:3.6.0'
+
+    implementation 'androidx.test:runner:1.2.0'
+    implementation 'androidx.test:rules:1.2.0'
+
+    implementation 'androidx.test:rules:1.3.0-beta01'
+    implementation 'androidx.test:rules:{strictly 1.2.0}'
+    implementation 'androidx.test:rules:1.2.0'
 }
