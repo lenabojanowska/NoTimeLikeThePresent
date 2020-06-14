@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
 
-            android:background="#BA673AB7"
+            android:background="#6532C1"
             android:subtitleTextAppearance="@style/TextAppearance.AppCompat.Large"
             android:titleTextAppearance="@style/TextAppearance.AppCompat.Body1" />
 
