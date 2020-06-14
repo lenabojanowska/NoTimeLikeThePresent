@@ -72,9 +72,6 @@ public class TaskFragment extends Fragment  {
                         editTextTitle.getText().toString(),
                         editTextDetails.getText().toString(),
                         priorityPicker.getValue());
-//        task.setTitle(title);
-//        task.setDetails(details);
-//        task.setPriority(priority);
 
                 taskViewModel.insertTask(task);
 
@@ -82,19 +79,14 @@ public class TaskFragment extends Fragment  {
 
                 editTextTitle.setText("");
                 editTextDetails.setText("");
-                //onBackPressed();
-               // taskViewModel.getAllTasks();
-               // beginTransaction().replace(R.id.fragment_container, new MainFragment(),null).commit();
+
 
                 Fragment newFragment = new MainFragment();
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
 
-// Replace whatever is in the fragment_container view with this fragment,
-// and add the transaction to the back stack if needed
                 transaction.replace(R.id.fragment_container, newFragment);
                 transaction.addToBackStack(null);
 
-// Commit the transaction
                 transaction.commit();
 
             }
