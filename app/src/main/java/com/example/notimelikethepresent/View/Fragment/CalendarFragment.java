@@ -71,12 +71,7 @@ public class CalendarFragment extends Fragment implements DatePickerDialog.OnDat
                 false
         );
 
-//        cancelButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                NotifyMe.cancel(getActivity().getApplicationContext(),"test");
-//            }
-//        });
+
 
         setNotificationButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -122,7 +117,7 @@ public class CalendarFragment extends Fragment implements DatePickerDialog.OnDat
                 .title(titleEditText.getText().toString())
                 .content(subtitleEditText.getText().toString())
                 .color(255,0,0,255)
-                .led_color(255,255,255,255)
+                .led_color(252,225,52,255)
                 .time(now)
                 .addAction(new Intent(), "Snozze", false)
                 .key("test")

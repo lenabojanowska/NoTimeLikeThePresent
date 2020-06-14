@@ -41,7 +41,7 @@ public class LoginActivity extends AppCompatActivity {
                             createSignInIntentBuilder()
                             .setAvailableProviders(providers)
                             .setIsSmartLockEnabled(false)
-
+                            .setLogo(R.drawable.logo)
                             .build(), RC_SIGN_IN);
         }
     }
